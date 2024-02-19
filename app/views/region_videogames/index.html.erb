@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Region videogames</h1>
+
+<div id="region_videogames">
+  <% @region_videogames.each do |region_videogame| %>
+    <%= render region_videogame %>
+    <p>
+      <%= link_to "Show this region videogame", region_videogame %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New region videogame", new_region_videogame_path %>
