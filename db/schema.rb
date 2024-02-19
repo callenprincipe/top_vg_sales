@@ -49,10 +49,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_193717) do
     t.integer "rank"
     t.string "name"
     t.integer "year"
+    t.integer "publisher_id", null: false
+    t.integer "platform_id", null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_videogames_on_genre_id"
+    t.index ["platform_id"], name: "index_videogames_on_platform_id"
+    t.index ["publisher_id"], name: "index_videogames_on_publisher_id"
   end
 
   add_foreign_key "region_videogames", "regions"
   add_foreign_key "region_videogames", "videogames"
+  add_foreign_key "videogames", "genres"
+  add_foreign_key "videogames", "platforms"
+  add_foreign_key "videogames", "publishers"
 end
