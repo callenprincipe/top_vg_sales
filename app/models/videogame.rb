@@ -9,4 +9,7 @@ class Videogame < ApplicationRecord
   validates :rank, :name, :year, presence: true
   validates :name, uniqueness: true
   validates :rank, :year, numericality: {only_integer: true}
+
+
+  scope :search, ->(query) { where('name LIKE ?', "%#{query}%") if query.present? }
 end

@@ -2,6 +2,19 @@
 <section class="section">
   <div class="container">
     <h1 class="title">Top Selling Video Games</h1>
+    <section class="section">
+    <div class="container">
+      <%= form_tag(videogames_path, method: :get, class: 'field has-addons') do %>
+        <div class="control">
+          <%= text_field_tag :search, params[:search], class: 'input', placeholder: 'Search by name...' %>
+        </div>
+        <div class="control">
+          <%= button_tag(type: 'submit', class: 'button is-primary') do %>
+            Search
+          <% end %>
+        </div>
+    <% end %>
+    <% if @videogames.any? %>
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
       <%= paginate @videogames,window:2 %>
     </nav>
@@ -17,5 +30,8 @@
         </div>
       <% end %>
     </div>
+    <% else %>
+      <p>No results found.</p>
+    <% end %>
   </div>
 </section>
