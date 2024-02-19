@@ -1,14 +1,21 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Videogames</h1>
-
-<div id="videogames">
-  <% @videogames.each do |videogame| %>
-    <%= render videogame %>
-    <p>
-      <%= link_to "Show this videogame", videogame %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New videogame", new_videogame_path %>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Top Selling Video Games</h1>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+      <%= paginate @videogames,window:2 %>
+    </nav>
+    <div class="columns is-multiline">
+      <% @videogames.each do |videogame| %>
+        <div class="column is-one-third">
+          <div class="box">
+            <p class="subtitle">Rank: <%= videogame.rank %></p>
+            <p class="title">
+              <%= link_to videogame.name, videogame, class: 'has-text-info' %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
