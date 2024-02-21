@@ -1,17 +1,67 @@
-<div id="<%= dom_id videogame %>">
-  <p>
-    <strong>Rank:</strong>
-    <%= videogame.rank %>
-  </p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= videogame.name %>
-  </p>
+  <h2 class="subtitle is-3"><%= videogame.name %></h2>
 
-  <p>
-    <strong>Year:</strong>
-    <%= videogame.year %>
-  </p>
+<div class="content">
+  <div class="columns">
+    <div class="column is-one-third">
+      <p class="title is-4">Rank:</p>
+      <p class="subtitle is-5"><%= videogame.rank %></p>
+    </div>
 
+    <div class="column is-one-third">
+      <p class="title is-4">Name:</p>
+      <p class="subtitle is-5"><%= videogame.name %></p>
+    </div>
+
+    <div class="column is-one-third">
+      <p class="title is-4">Year:</p>
+      <p class="subtitle is-5"><%= videogame.year %></p>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-one-third">
+      <p class="title is-4">Genre:</p>
+      <p class="subtitle is-5">
+        <% if @videogame.genre %>
+          <%= link_to @videogame.genre.name, genre_path(@videogame.genre) %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+    </div>
+
+    <div class="column is-one-third">
+      <p class="title is-4">Publisher:</p>
+      <p class="subtitle is-5">
+        <% if @videogame.publisher %>
+          <%= link_to @videogame.publisher.name, publisher_path(@videogame.publisher) %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+    </div>
+
+    <div class="column is-one-third">
+      <p class="title is-4">Platform:</p>
+      <p class="subtitle is-5">
+        <% if @videogame.platform %>
+          <%= link_to @videogame.platform.name, platform_path(@videogame.platform) %>
+        <% else %>
+          N/A
+        <% end %>
+      </p>
+    </div>
+  </div>
+
+    <h2 class="subtitle is-3">Sales by Region</h2>
+
+    <% @regions.each do |region| %>
+      <div class="box">
+        <p class="title is-4"><strong><%= link_to region.name, region_path(region) %> Sales:</strong></p>
+        <p class="subtitle is-5">
+          <% region_videogame = @videogame.region_videogames.find_by(region: region) %>
+          <%= region_videogame.sales if region_videogame %> million
+        </p>
+      </div>
+    <% end %>
 </div>
