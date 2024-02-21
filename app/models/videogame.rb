@@ -12,4 +12,5 @@ class Videogame < ApplicationRecord
 
 
   scope :search, ->(query) { where('name LIKE ?', "%#{query}%") if query.present? }
+
 end

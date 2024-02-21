@@ -12,6 +12,7 @@ class VideogamesController < ApplicationController
 
   # GET /videogames/1 or /videogames/1.json
   def show
+    @regions = @videogame.regions.includes(:region_videogames)
   end
 
   # GET /videogames/new
