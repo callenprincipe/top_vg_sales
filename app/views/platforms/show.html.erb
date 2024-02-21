@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "Back to Platforms", platforms_path%>
 
-<%= render @platform %>
+<h2 class="title is-2">Top Sold Video Games in <%= @platform.name %></h2>
 
-<div>
-  <%= link_to "Edit this platform", edit_platform_path(@platform) %> |
-  <%= link_to "Back to platforms", platforms_path %>
 
-  <%= button_to "Destroy this platform", @platform, method: :delete %>
-</div>
+ <div class="columns is-multiline">
+      <% @platform.videogames.each do |videogame| %>
+        <div class="column is-one-third">
+          <div class="box">
+            <p class="subtitle">Rank: <%= videogame.rank %></p>
+            <p class="title">
+              <%= link_to videogame.name, videogame, class: 'has-text-info' %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+  </div>

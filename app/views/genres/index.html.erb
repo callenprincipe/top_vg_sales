@@ -1,14 +1,14 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Genres</h1>
+<h1 class="title is-1">Genres</h1>
 
-<div id="genres">
+<div class="columns is-multiline" id="genres">
   <% @genres.each do |genre| %>
-    <%= render genre %>
-    <p>
-      <%= link_to "Show this genre", genre %>
-    </p>
+    <div class="column is-one-third">
+      <div class="box">
+        <p class="subtitle is-4">
+          <%= link_to genre.name, genre, class: "has-text-info" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New genre", new_genre_path %>

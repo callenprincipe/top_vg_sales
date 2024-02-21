@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "Back to Publishers", publishers_path%>
 
-<%= render @publisher %>
+<h2 class="title is-2">Top Sold Video Games in <%= @publisher.name %></h2>
 
-<div>
-  <%= link_to "Edit this publisher", edit_publisher_path(@publisher) %> |
-  <%= link_to "Back to publishers", publishers_path %>
 
-  <%= button_to "Destroy this publisher", @publisher, method: :delete %>
-</div>
+ <div class="columns is-multiline">
+      <% @publisher.videogames.each do |videogame| %>
+        <div class="column is-one-third">
+          <div class="box">
+            <p class="subtitle">Rank: <%= videogame.rank %></p>
+            <p class="title">
+              <%= link_to videogame.name, videogame, class: 'has-text-info' %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+  </div>

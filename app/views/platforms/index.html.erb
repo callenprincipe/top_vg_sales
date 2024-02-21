@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="title is-1">Platforms</h1>
 
-<h1>Platforms</h1>
-
-<div id="platforms">
+<div class="columns is-multiline" id="genres">
   <% @platforms.each do |platform| %>
-    <%= render platform %>
-    <p>
-      <%= link_to "Show this platform", platform %>
-    </p>
+    <div class="column is-one-third">
+      <div class="box">
+        <p class="subtitle is-4">
+          <%= link_to platform.name, platform, class: "has-text-info" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New platform", new_platform_path %>

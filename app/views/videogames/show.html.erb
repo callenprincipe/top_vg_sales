@@ -1,10 +1,30 @@
 <%= render @videogame %>
 
+<p><strong>Genre:</strong>
+  <% if @videogame.genre %>
+    <%= link_to @videogame.genre.name, genre_path(@videogame.genre) %>
+  <% else %>
+    N/A
+  <% end %>
+</p>
 
-<p><strong>Genre:</strong> <%= @videogame.genre.name if @videogame.genre %></p>
-<p><strong>Publisher:</strong> <%= @videogame.publisher.name if @videogame.publisher %></p>
-<p><strong>Platform:</strong> <%= @videogame.platform.name if @videogame.platform %></p>
+<p><strong>Publisher:</strong>
+  <% if @videogame.publisher %>
+     <%= link_to @videogame.publisher.name, publisher_path(@videogame.publisher) %>
+  <% else %>
+    N/A
+  <% end %>
+</p>
+
+<p><strong>Platform:</strong>
+  <% if @videogame.platform %>
+     <%= link_to @videogame.platform.name, platform_path(@videogame.platform) %>
+  <% else %>
+    N/A
+  <% end %>
+</p>
+
 <% @regions.each do |region| %>
   <% region_videogame = @videogame.region_videogames.find_by(region: region) %>
-  <p><strong><%= region.name %> Sales:</strong> <%= region_videogame.sales if region_videogame %> million</p>
+  <p><strong><%= link_to region.name, region_path(region) %> Sales:</strong> <%= region_videogame.sales if region_videogame %> million</p>
 <% end %>

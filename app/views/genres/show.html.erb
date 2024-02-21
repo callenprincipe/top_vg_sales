@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @genre %>
+<%= link_to "Back to Genres", genres_path%>
 
-<div>
-  <%= link_to "Edit this genre", edit_genre_path(@genre) %> |
-  <%= link_to "Back to genres", genres_path %>
+<h2 class="title is-2">Top Sold Video Games in <%= @genre.name %></h2>
 
-  <%= button_to "Destroy this genre", @genre, method: :delete %>
-</div>
+
+ <div class="columns is-multiline">
+      <% @genre.videogames.each do |videogame| %>
+        <div class="column is-one-third">
+          <div class="box">
+            <p class="subtitle">Rank: <%= videogame.rank %></p>
+            <p class="title">
+              <%= link_to videogame.name, videogame, class: 'has-text-info' %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+  </div>
