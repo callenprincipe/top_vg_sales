@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="title is-1">Regions</h1>
 
-<h1>Regions</h1>
-
-<div id="regions">
+<div class="columns is-multiline" id="genres">
   <% @regions.each do |region| %>
-    <%= render region %>
-    <p>
-      <%= link_to "Show this region", region %>
-    </p>
+    <div class="column is-one-third">
+      <div class="box">
+        <p class="subtitle is-4">
+          <%= link_to region.name, region, class: "has-text-info" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New region", new_region_path %>

@@ -25,6 +25,9 @@
 </p>
 
 <% @regions.each do |region| %>
-  <% region_videogame = @videogame.region_videogames.find_by(region: region) %>
-  <p><strong><%= link_to region.name, region_path(region) %> Sales:</strong> <%= region_videogame.sales if region_videogame %> million</p>
+  <p>
+    <strong><%= link_to region.name, region_path(region) %> Sales:</strong>
+    <% region_videogame = @videogame.region_videogames.find_by(region: region) %>
+    <%= region_videogame.sales if region_videogame %> million
+  </p>
 <% end %>
